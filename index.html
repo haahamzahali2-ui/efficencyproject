@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Free Clinic Referrals</title>
+    <title>Referrals</title>
     <style>
-        /* BODY AND BACKGROUND */
+        /* BODY & BACKGROUND */
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #a0d8f1, #f4f6f9);
+            background: linear-gradient(135deg, #fff6e0, #fdfaf5); /* gold & white gradient */
             margin: 0;
             padding: 20px;
             color: #333;
@@ -16,23 +16,24 @@
         h1 {
             text-align: center;
             margin-bottom: 40px;
-            color: #005a9c;
-            font-size: 2.5em;
+            color: #b8860b; /* golden title */
+            font-size: 3em;
+            font-weight: bold;
         }
 
-        /* GRID LAYOUT */
+        /* GRID */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             padding: 0 20px;
         }
 
-        /* CARD STYLE */
+        /* CARD STYLING */
         .card {
             background: #ffffff;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.12);
             padding: 20px;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -46,23 +47,25 @@
         .card-title {
             font-size: 22px;
             font-weight: bold;
-            color: #005a9c;
+            color: #b8860b; /* golden title for cards */
             margin-bottom: 10px;
+            text-align: center;
         }
 
-        /* CARD CONTENT HIDDEN BY DEFAULT */
+        /* CONTENT HIDDEN BY DEFAULT */
         .card-content {
             display: none;
-            margin-top: 15px;
-            line-height: 1.5;
+            margin-top: 10px;
+            line-height: 1.6;
             font-size: 16px;
         }
 
+        /* BUTTON STYLE */
         .card a {
             display: inline-block;
             padding: 10px 14px;
             margin-top: 10px;
-            background-color: #007bff;
+            background-color: #b8860b;
             color: white;
             text-decoration: none;
             border-radius: 6px;
@@ -70,36 +73,76 @@
         }
 
         .card a:hover {
-            background-color: #0056b3;
+            background-color: #996700;
         }
-
     </style>
 </head>
 <body>
 
-<h1>Columbus Free Clinic Referrals</h1>
+<h1>Referrals</h1>
 
 <div class="grid">
 
-    <!-- Gynecology Card -->
+    <!-- Gynecologist Card -->
     <div class="card" onclick="toggleCard(this)">
-        <div class="card-title">Gynecology</div>
+        <div class="card-title">Gynecologist</div>
         <div class="card-content">
-            <p><strong>1.</strong> Confirm the referral is for gynecologic care (not general preventive women's health).</p>
-            <p><strong>2.</strong> Print the referral and place it in the referral bin.</p>
-            <p><strong>3.</strong> Complete the patient info form:</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank">Enter Patient Info</a>
-            <p>Once submitted, Columbus Free Clinic will call to schedule an appointment.</p>
+            <ol>
+                <li>Ensure it’s not a preventive women’s health visit. Look for things like “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.</li>
+                <li>Print referral order and place in the bin.</li>
+                <li>Click the link below and enter patient information:</li>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank">Enter Patient Info</a>
+                <li>Columbus Free Clinic will call the patient to confirm the appointment.</li>
+                <li>Tell patient to only go to the clinic once they receive a call or voicemail.</li>
+            </ol>
         </div>
     </div>
 
-    <!-- Neurology Card -->
+    <!-- Women's Health Card -->
     <div class="card" onclick="toggleCard(this)">
-        <div class="card-title">Neurology</div>
+        <div class="card-title">Women’s Health</div>
         <div class="card-content">
-            <p><strong>1.</strong> Neurology visits are scheduled through clinic referral coordination.</p>
-            <p><strong>2.</strong> Check with leadership on neurologist availability.</p>
-            <p><strong>3.</strong> Schedule the patient in Athena once availability is confirmed.</p>
+            <ol>
+                <li>Ensure it’s a preventative visit, not a gynecology referral.</li>
+                <li>Grab the women’s health scheduling clipboard from the front.</li>
+                <li>Go to patient room and ask what time works best, then put their name down.</li>
+                <li>Go to Athena and schedule the patient at the chosen time.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Neurologist Card -->
+    <div class="card" onclick="toggleCard(this)">
+        <div class="card-title">Neurologist</div>
+        <div class="card-content">
+            <ol>
+                <li>Neurology visits are done here — check with leadership for neurologist availability.</li>
+                <li>Once availability is confirmed, schedule the patient to come back.</li>
+                <li>Make sure to assign patient to the appropriate provider.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Cardiologist Card -->
+    <div class="card" onclick="toggleCard(this)">
+        <div class="card-title">Cardiologist</div>
+        <div class="card-content">
+            <ol>
+                <li>Print referral and place in the bin.</li>
+                <li>Tell patients they will receive a phone call from PhysicianCareConnection to schedule an appointment.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Mammograms Card -->
+    <div class="card" onclick="toggleCard(this)">
+        <div class="card-title">Mammograms</div>
+        <div class="card-content">
+            <p>Done at OSU:</p>
+            <ol>
+                <li>Print order and place in bin.</li>
+                <li>Ask Trena and she will take care of it.</li>
+            </ol>
         </div>
     </div>
 
@@ -108,13 +151,11 @@
 <script>
 function toggleCard(card) {
     const content = card.querySelector(".card-content");
-    // Hide all other cards first
+    // Close all other cards
     document.querySelectorAll('.card-content').forEach(c => {
-        if (c !== content) {
-            c.style.display = 'none';
-        }
+        if (c !== content) c.style.display = 'none';
     });
-    // Toggle the clicked card
+    // Toggle clicked card
     content.style.display = content.style.display === "block" ? "none" : "block";
 }
 </script>
