@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Free Clinic Referrals</title>
     <style>
+        /* BODY AND BACKGROUND */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
+            background: linear-gradient(135deg, #a0d8f1, #f4f6f9);
             margin: 0;
             padding: 20px;
             color: #333;
@@ -14,28 +15,32 @@
 
         h1 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: #005a9c;
+            font-size: 2.5em;
         }
 
+        /* GRID LAYOUT */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
             padding: 0 20px;
         }
 
+        /* CARD STYLE */
         .card {
             background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
             padding: 20px;
             cursor: pointer;
-            transition: 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card:hover {
-            transform: scale(1.02);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
         }
 
         .card-title {
@@ -45,9 +50,10 @@
             margin-bottom: 10px;
         }
 
+        /* CARD CONTENT HIDDEN BY DEFAULT */
         .card-content {
             display: none;
-            margin-top: 10px;
+            margin-top: 15px;
             line-height: 1.5;
             font-size: 16px;
         }
@@ -66,11 +72,12 @@
         .card a:hover {
             background-color: #0056b3;
         }
+
     </style>
 </head>
 <body>
 
-<h1>Free Clinic Referral Scheduling</h1>
+<h1>Columbus Free Clinic Referrals</h1>
 
 <div class="grid">
 
@@ -78,7 +85,7 @@
     <div class="card" onclick="toggleCard(this)">
         <div class="card-title">Gynecology</div>
         <div class="card-content">
-            <p><strong>1.</strong> Confirm that the referral is for gynecologic care (not general preventive women's health).</p>
+            <p><strong>1.</strong> Confirm the referral is for gynecologic care (not general preventive women's health).</p>
             <p><strong>2.</strong> Print the referral and place it in the referral bin.</p>
             <p><strong>3.</strong> Complete the patient info form:</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank">Enter Patient Info</a>
@@ -101,10 +108,17 @@
 <script>
 function toggleCard(card) {
     const content = card.querySelector(".card-content");
-    // Toggle display
+    // Hide all other cards first
+    document.querySelectorAll('.card-content').forEach(c => {
+        if (c !== content) {
+            c.style.display = 'none';
+        }
+    });
+    // Toggle the clicked card
     content.style.display = content.style.display === "block" ? "none" : "block";
 }
 </script>
 
 </body>
 </html>
+
