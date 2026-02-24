@@ -1,88 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Referrals</title>
-    <style>
-        /* BODY & BACKGROUND */
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #fff6e0, #fdfaf5);
-            margin: 0;
-            padding: 40px 20px;
-            color: #333;
-        }
+<meta charset="UTF-8">
+<title>Referrals</title>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fffaf5, #fff0e0);
+    color: #333;
+}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 50px;
-            color: #b8860b;
-            font-size: 3em;
-            font-weight: bold;
-        }
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #b8860b, #ffd700);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    font-size: 2.5em;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
-        /* GRID LIST / COURSE-LIKE */
-        .grid {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+header img {
+    height: 60px;
+    margin-right: 15px;
+}
 
-        /* CARD STYLE */
-        .card {
-            background: #ffffff;
-            border-left: 8px solid #b8860b;
-            border-radius: 8px;
-            padding: 25px 20px;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+/* GRID */
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
+/* CARD STYLE */
+.card {
+    background: linear-gradient(135deg, #fffaf0, #fff6e5);
+    border-radius: 20px;
+    padding: 30px 25px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-left: 10px solid #b8860b;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
 
-        .card-title {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #b8860b;
-            margin-bottom: 10px;
-        }
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
 
-        /* CONTENT HIDDEN BY DEFAULT */
-        .card-content {
-            display: none;
-            margin-top: 15px;
-            line-height: 1.6;
-            font-size: 16px;
-        }
+.card::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+    top: -50px;
+    right: -50px;
+    border-radius: 50%;
+    z-index: 0;
+    transition: transform 0.5s ease;
+}
 
-        .card-content ol {
-            margin-left: 20px;
-        }
+.card:hover::before {
+    transform: scale(1.3);
+}
 
-        .card a {
-            display: inline-block;
-            padding: 10px 16px;
-            margin-top: 10px;
-            background-color: #b8860b;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-        }
+/* CARD CONTENT */
+.card-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: #b8860b;
+    margin-bottom: 15px;
+    z-index: 1;
+    position: relative;
+}
 
-        .card a:hover {
-            background-color: #996700;
-        }
-    </style>
+.card-content {
+    display: none;
+    z-index: 1;
+    position: relative;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.card-content ol {
+    margin-left: 20px;
+}
+
+.card-content img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.button-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background-color: #b8860b;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #996700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .card-title { font-size: 1.6em; }
+    header { font-size: 2em; padding: 20px; }
+}
+</style>
 </head>
 <body>
 
-<h1>Referrals</h1>
+<header>
+    <!-- Logo placeholder -->
+    <!-- <img src="logo.png" alt="Helping Hands Logo"> -->
+    Referrals
+</header>
 
 <div class="grid">
 
@@ -94,7 +148,7 @@
                 <li>Ensure it’s not a preventive women’s health visit. Look for “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.</li>
                 <li>Print referral order and place in the bin.</li>
                 <li>Click the link below and enter patient information:</li>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank">Enter Patient Info</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank" class="button-link">Enter Patient Info</a>
                 <li>Columbus Free Clinic will call the patient to confirm the appointment.</li>
                 <li>Tell patient to only go to the clinic once they receive a call or voicemail.</li>
             </ol>
@@ -121,7 +175,7 @@
             <ol>
                 <li>Neurology visits are done here — check with leadership for neurologist availability.</li>
                 <li>Once availability is confirmed, schedule the patient to come back.</li>
-                <li>Make sure to assign patient to the appropriate provider.</li>
+                <li>Make sure to assign the patient to the appropriate provider.</li>
             </ol>
         </div>
     </div>
@@ -155,11 +209,9 @@
 function toggleCard(card) {
     const content = card.querySelector(".card-content");
     const allContents = document.querySelectorAll('.card-content');
-    // Close all other cards
     allContents.forEach(c => {
         if (c !== content) c.style.display = 'none';
     });
-    // Toggle clicked card
     content.style.display = (content.style.display === "block") ? "none" : "block";
 }
 </script>
