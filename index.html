@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Free Clinic Referrals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #005a9c;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #005a9c;
+            margin-bottom: 10px;
+        }
+
+        .card-content {
+            display: none;
+            margin-top: 10px;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 10px 14px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Free Clinic Referral Scheduling</h1>
+
+<div class="grid">
+
+    <!-- Gynecology Card -->
+    <div class="card" onclick="toggleCard(this)">
+        <div class="card-title">Gynecology</div>
+        <div class="card-content">
+            <p><strong>1.</strong> Confirm that the referral is for gynecologic care (not general preventive women's health).</p>
+            <p><strong>2.</strong> Print the referral and place it in the referral bin.</p>
+            <p><strong>3.</strong> Complete the patient info form:</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank">Enter Patient Info</a>
+            <p>Once submitted, Columbus Free Clinic will call to schedule an appointment.</p>
+        </div>
+    </div>
+
+    <!-- Neurology Card -->
+    <div class="card" onclick="toggleCard(this)">
+        <div class="card-title">Neurology</div>
+        <div class="card-content">
+            <p><strong>1.</strong> Neurology visits are scheduled through clinic referral coordination.</p>
+            <p><strong>2.</strong> Check with leadership on neurologist availability.</p>
+            <p><strong>3.</strong> Schedule the patient in Athena once availability is confirmed.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function toggleCard(card) {
+    const content = card.querySelector(".card-content");
+    // Toggle display
+    content.style.display = content.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
