@@ -7,63 +7,66 @@
         /* BODY & BACKGROUND */
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #fff6e0, #fdfaf5); /* gold & white gradient */
+            background: linear-gradient(135deg, #fff6e0, #fdfaf5);
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
             color: #333;
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 40px;
-            color: #b8860b; /* golden title */
+            margin-bottom: 50px;
+            color: #b8860b;
             font-size: 3em;
             font-weight: bold;
         }
 
-        /* GRID */
+        /* GRID LIST / COURSE-LIKE */
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 25px;
-            padding: 0 20px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        /* CARD STYLING */
+        /* CARD STYLE */
         .card {
             background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.12);
-            padding: 20px;
+            border-left: 8px solid #b8860b;
+            border-radius: 8px;
+            padding: 25px 20px;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .card-title {
-            font-size: 22px;
+            font-size: 1.8em;
             font-weight: bold;
-            color: #b8860b; /* golden title for cards */
+            color: #b8860b;
             margin-bottom: 10px;
-            text-align: center;
         }
 
         /* CONTENT HIDDEN BY DEFAULT */
         .card-content {
             display: none;
-            margin-top: 10px;
+            margin-top: 15px;
             line-height: 1.6;
             font-size: 16px;
         }
 
-        /* BUTTON STYLE */
+        .card-content ol {
+            margin-left: 20px;
+        }
+
         .card a {
             display: inline-block;
-            padding: 10px 14px;
+            padding: 10px 16px;
             margin-top: 10px;
             background-color: #b8860b;
             color: white;
@@ -88,7 +91,7 @@
         <div class="card-title">Gynecologist</div>
         <div class="card-content">
             <ol>
-                <li>Ensure it’s not a preventive women’s health visit. Look for things like “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.</li>
+                <li>Ensure it’s not a preventive women’s health visit. Look for “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.</li>
                 <li>Print referral order and place in the bin.</li>
                 <li>Click the link below and enter patient information:</li>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank">Enter Patient Info</a>
@@ -105,7 +108,7 @@
             <ol>
                 <li>Ensure it’s a preventative visit, not a gynecology referral.</li>
                 <li>Grab the women’s health scheduling clipboard from the front.</li>
-                <li>Go to patient room and ask what time works best, then put their name down.</li>
+                <li>Go to patient room, ask what time works best, and put their name down.</li>
                 <li>Go to Athena and schedule the patient at the chosen time.</li>
             </ol>
         </div>
@@ -151,15 +154,15 @@
 <script>
 function toggleCard(card) {
     const content = card.querySelector(".card-content");
+    const allContents = document.querySelectorAll('.card-content');
     // Close all other cards
-    document.querySelectorAll('.card-content').forEach(c => {
+    allContents.forEach(c => {
         if (c !== content) c.style.display = 'none';
     });
     // Toggle clicked card
-    content.style.display = content.style.display === "block" ? "none" : "block";
+    content.style.display = (content.style.display === "block") ? "none" : "block";
 }
 </script>
 
 </body>
 </html>
-
