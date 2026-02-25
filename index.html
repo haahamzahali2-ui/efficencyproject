@@ -29,17 +29,17 @@ header {
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 25px;
     max-width: 1300px;
-    margin: 60px auto;
-    padding: 0 30px 80px 30px;
+    margin: 50px auto;
+    padding: 0 30px 60px 30px;
 }
 
 /* CARD */
 .card {
     background: #ffffff;
-    border-radius: 16px;
-    padding: 28px;
+    border-radius: 14px;
+    padding: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1px solid rgba(212,175,55,0.35);
@@ -48,7 +48,7 @@ header {
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     border: 1px solid #d4af37;
     box-shadow: 0 12px 35px rgba(212,175,55,0.18);
 }
@@ -81,20 +81,19 @@ header {
 /* BUTTON */
 .button-link {
     display: inline-block;
-    margin-top: 12px;
-    padding: 10px 16px;
+    margin-top: 10px;
+    padding: 8px 14px;
     background: linear-gradient(135deg, #d4af37, #b68b2c);
     color: #ffffff;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 600;
-    transition: 0.25s ease;
-    box-shadow: 0 4px 15px rgba(212,175,55,0.25);
+    transition: 0.2s ease;
 }
 
 .button-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+    box-shadow: 0 6px 20px rgba(212,175,55,0.35);
 }
 
 /* MOBILE */
@@ -111,7 +110,114 @@ Helping Hands Referral System
 
 <div class="grid">
 
-<!-- Your card content remains EXACTLY the same -->
+<!-- Gynecologist -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">Gynecologist</div>
+<div class="card-content">
+<ol>
+<li>Ensure it’s not a preventive women’s health visit. Look for “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.</li>
+<li>Print referral order and place in the bin.</li>
+<li>Click the link below and enter patient information:</li>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank" class="button-link">Enter Patient Info</a>
+<li>Columbus Free Clinic will call the patient to confirm the appointment.</li>
+<li>Tell patient to only go to the clinic once they receive a call or voicemail.</li>
+</ol>
+</div>
+</div>
+
+<!-- Women's Health -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">Women’s Health</div>
+<div class="card-content">
+<ol>
+<li>Ensure it’s a preventative visit, not a gynecology referral.</li>
+<li>Grab the women’s health scheduling clipboard from the front.</li>
+<li>Go to patient room, ask what time works best, and put their name down.</li>
+<li>Go to Athena and schedule the patient at the chosen time.</li>
+</ol>
+</div>
+</div>
+
+<!-- Neurologist -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">Neurologist</div>
+<div class="card-content">
+<ol>
+<li>Neurology visits are done here — check with leadership for neurologist availability.</li>
+<li>Once availability is confirmed, schedule the patient to come back.</li>
+<li>Make sure to assign the patient to the appropriate provider.</li>
+</ol>
+</div>
+</div>
+
+<!-- Cardiologist -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">Cardiologist</div>
+<div class="card-content">
+<ol>
+<li>Print referral and place in the bin.</li>
+<li>Tell patients they will receive a phone call from PhysicianCareConnection to schedule an appointment.</li>
+</ol>
+</div>
+</div>
+
+<!-- Mammograms -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">Mammograms</div>
+<div class="card-content">
+<p>Done at OSU:</p>
+<ol>
+<li>Print order and place in bin.</li>
+<li>Ask Trena and she will take care of it.</li>
+</ol>
+</div>
+</div>
+
+<!-- Physical Therapy -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">Physical Therapy</div>
+<div class="card-content">
+<ol>
+<li>Print referral and place in bin.</li>
+<li>Fill out the form below:</li>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScyVMEZP_o_p2joiEmPZEW0zW9HOZ2Jc5pq00L5yvMnt86DPg/viewform" target="_blank" class="button-link">Fill Out Form</a>
+<li>Instruct patients to wait for a phone call to confirm the schedule, and to not go to the clinic without confirmation.</li>
+</ol>
+</div>
+</div>
+
+<!-- EKG -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">EKG</div>
+<div class="card-content">
+<ol>
+<li>Do NOT print.</li>
+<li>These are done in our clinic, take patient to lab.</li>
+</ol>
+</div>
+</div>
+
+<!-- Optometry -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">Optometry</div>
+<div class="card-content">
+<ol>
+<li>Instruct patient to go to Dwell community clinic located at (1934 N. 4th Street, 43201).</li>
+<li>Only open on 1st and 3rd Monday of every month from 6PM to 7PM.</li>
+</ol>
+</div>
+</div>
+
+<!-- Dental Emergency -->
+<div class="card" onclick="toggleCard(this)">
+<div class="card-title">Dental (Emergency)</div>
+<div class="card-content">
+<ol>
+<li>Print referral order and place in bin.</li>
+<li>Instruct patients that Grace Free Clinic will call them to schedule an appointment.</li>
+</ol>
+</div>
+</div>
 
 </div>
 
@@ -124,4 +230,3 @@ function toggleCard(card) {
 
 </body>
 </html>
-    
