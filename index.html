@@ -35,12 +35,13 @@ header {
 }
 
 .grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 50px auto;
     padding: 0 20px;
+}
 }
 
 .card {
