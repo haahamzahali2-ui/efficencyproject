@@ -71,10 +71,11 @@ header {
 }
 
 .card-content.open {
-    max-height: 800px;
+    max-height: 1200px; /* increased for longer content */
 }
 
-.card-content ol {
+.card-content ol,
+.card-content ul {
     margin-left: 20px;
 }
 
@@ -113,26 +114,25 @@ Helping Hands Referral System
 <!-- Important Notice -->
 <div class="card" onclick="toggleCard(this)" style="background: #ff4d4d; border: 2px solid #b30000;">
   <div class="card-title" style="color: #b68b2c;">*Important* please read before doing any referral</div>
- <div class="card-content">
-  <ul>
-    <li>Referrals no longer need to be printed, instead, they will be shared on Athena</li>  
-    <li>Please enable information sharing on Athena before doing any referral, ask someone if you do not know how to.</li>
-    <li>This will share the Athena profile of the patient to the provider they are being referred to</li>
-  </ul>
-</div>
-
+  <div class="card-content">
+    <ul>
+      <li>Referrals no longer need to be printed, instead, they will be shared on Athena.</li>
+      <li>Please enable information sharing on Athena before doing any referral; ask someone if you do not know how to.</li>
+      <li>This will share the Athena profile of the patient with the provider they are being referred to.</li>
+    </ul>
+    <!-- BACKSIDE CONTENT CAN BE ADDED HERE -->
   </div>
 </div>
 
-    <!-- Gynecologist -->
+<!-- Gynecologist -->
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Gynecologist</div>
 <div class="card-content">
 <ol>
 <li>Ensure it’s not a preventive women’s health visit. Look for “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.</li>
 <li>Print referral order and place in the bin.</li>
-<li>Go to the paitent room and enter their information in the form below.:</li>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank" class="button-link">Click here to acess form</a>
+<li>Go to the patient room and enter their information in the form below:</li>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank" class="button-link">Click here to access form</a>
 <li>Columbus Free Clinic will call the patient to make an appointment.</li>
 </ol>
 </div>
@@ -146,7 +146,7 @@ Helping Hands Referral System
 <li>Ensure it’s a preventative visit, not a gynecology referral.</li>
 <li>Grab the women’s health scheduling clipboard from the front.</li>
 <li>Go to patient room, ask what time works best, and record Athena ID, DOB, and phone number.</li>
-    <li> Give the paitent a reminder card (Available at front) <li>
+<li>Give the patient a reminder card (Available at front)</li>
 <li>Go to Athena and schedule the patient at the chosen time.</li>
 </ol>
 </div>
@@ -157,8 +157,8 @@ Helping Hands Referral System
 <div class="card-title">Neurologist</div>
 <div class="card-content">
 <ol>
-<li>Neurology visits are done here — check with leadership for neurologist availabilit, usually once a month on a Thursday.</li>
-<li>Once availability is confirmed, confirm with the paitent and  schedule them on athena.</li>
+<li>Neurology visits are done here — check with leadership for neurologist availability, usually once a month on a Thursday.</li>
+<li>Once availability is confirmed, confirm with the patient and schedule them on Athena.</li>
 <li>Make sure to assign the patient to Dr Leon Rosenburg.</li>
 </ol>
 </div>
@@ -171,7 +171,7 @@ Helping Hands Referral System
 <ol>
 <li>Print referral and place in the bin.</li>
 <li>Tell patients they will receive a phone call from PhysicianCareConnection to schedule an appointment.</li>
-    <li> This is the only FREE cardiology option and appointment are usually booked, instruct paitent to keep an eye on their phone </li>
+<li>This is the only FREE cardiology option and appointments are usually booked; instruct patient to keep an eye on their phone.</li>
 </ol>
 </div>
 </div>
@@ -234,7 +234,7 @@ Helping Hands Referral System
 </div>
 </div>
 
-<!-- Dental (non emergency) -->
+<!-- Dental (Non Emergency) -->
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Dental (Non Emergency)</div>
 <div class="card-content">
@@ -245,7 +245,7 @@ Helping Hands Referral System
 </div>
 </div>
 
-    <!-- Diabetic Retinopathy -->
+<!-- Diabetic Retinopathy -->
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Diabetic Retinopathy</div>
 <div class="card-content">
@@ -259,8 +259,7 @@ Helping Hands Referral System
 </div>
 </div>
 
-
-     <!-- Ultrasound -->
+<!-- Ultrasound -->
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Ultrasound</div>
 <div class="card-content">
@@ -274,30 +273,20 @@ Helping Hands Referral System
 </div>
 </div>
 
-<!-- Work / School Physicals -->
+<!-- Physicals for work and school -->
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Physicals for work and school</div>
 <div class="card-content">
 <ol>
 <li>These are done at Grace Free Clinic</li>
-<li>Click below for hours and locations, instruct paitent to go there..</li>
+<li>Click below for hours and locations, instruct patient to go there.</li>
 <li>No further action is needed:</li>
-<a href="https://graceclinicsoh.org/locations-hours/
-" target="_blank" class="button-link">Locations and hours</a>
+<a href="https://graceclinicsoh.org/locations-hours/" target="_blank" class="button-link">Locations and hours</a>
 </ol>
 </div>
 </div>
-    
 
-
-
-
-
-
-
-    
-
-</div>
+</div> <!-- end grid -->
 
 <script>
 function toggleCard(card) {
