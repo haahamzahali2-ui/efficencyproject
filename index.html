@@ -2,297 +2,572 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <title>Helping Hands Referral System</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #ffffff, #f8f6f0);
-    color: #1a1a1a;
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+
+background:
+linear-gradient(135deg,#ffffff,#f7f4ea,#f3efe3);
+
+color:#1a1a1a;
+
+animation:bgMove 12s ease infinite alternate;
+}
+
+@keyframes bgMove{
+0%{background-position:left}
+100%{background-position:right}
 }
 
 /* HEADER */
-header {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 2.5em;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #b68b2c;
-    border-bottom: 2px solid rgba(212,175,55,0.3);
-    background: linear-gradient(to right, #ffffff, #f3efe3);
+
+header{
+text-align:center;
+padding:55px 20px 40px 20px;
+
+background:
+linear-gradient(to right,#ffffff,#f3efe3,#ffffff);
+
+border-bottom:2px solid rgba(212,175,55,0.35);
+
+box-shadow:0 6px 25px rgba(0,0,0,0.05);
 }
 
-/* GRID MATRIX */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    max-width: 1300px;
-    margin: 50px auto;
-    padding: 0 30px 60px 30px;
+header h1{
+margin:0;
+font-size:2.6em;
+letter-spacing:1px;
+font-weight:700;
+
+background:linear-gradient(135deg,#d4af37,#b68b2c);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+header p{
+margin-top:10px;
+color:#666;
+font-size:.95em;
+}
+
+/* GRID */
+
+.grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:30px;
+
+max-width:1350px;
+
+margin:50px auto;
+
+padding:0 30px 60px 30px;
+
 }
 
 /* CARD */
-.card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(212,175,55,0.35);
-    min-height: 120px;
-    box-shadow: 0 8px 25px rgba(212,175,55,0.08);
+
+.card{
+
+background:rgba(255,255,255,0.8);
+
+backdrop-filter:blur(6px);
+
+border-radius:16px;
+
+padding:25px;
+
+cursor:pointer;
+
+transition:all .35s ease;
+
+border:1px solid rgba(212,175,55,0.25);
+
+min-height:110px;
+
+position:relative;
+
+overflow:hidden;
+
+box-shadow:
+
+0 10px 30px rgba(212,175,55,0.08);
+
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    border: 1px solid #d4af37;
-    box-shadow: 0 12px 35px rgba(212,175,55,0.18);
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+right:0;
+height:3px;
+
+background:linear-gradient(90deg,#d4af37,#f7e27d,#d4af37);
+
+opacity:0;
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+
+box-shadow:
+
+0 18px 45px rgba(212,175,55,0.18);
+
+border:1px solid rgba(212,175,55,0.5);
+
+}
+
+.card:hover::before{
+
+opacity:1;
+
 }
 
 /* TITLE */
-.card-title {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #b68b2c;
+
+.card-title{
+
+font-size:1.25em;
+
+font-weight:600;
+
+color:#b68b2c;
+
 }
 
 /* CONTENT */
-.card-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    margin-top: 15px;
-    font-size: 0.95em;
-    color: #444;
+
+.card-content{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:max-height .45s ease;
+
+margin-top:15px;
+
+font-size:.94em;
+
+line-height:1.5em;
+
+color:#444;
+
 }
 
-.card-content.open {
-    max-height: 1200px; /* increased for longer content */
+.card-content.open{
+
+max-height:1200px;
+
 }
 
 .card-content ol,
-.card-content ul {
-    margin-left: 20px;
+.card-content ul{
+
+margin-left:20px;
+
 }
 
 /* BUTTON */
-.button-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 14px;
-    background: linear-gradient(135deg, #d4af37, #b68b2c);
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: 0.2s ease;
+
+.button-link{
+
+display:inline-block;
+
+margin-top:12px;
+
+padding:9px 16px;
+
+font-size:.9em;
+
+font-weight:600;
+
+letter-spacing:.3px;
+
+background:linear-gradient(135deg,#d4af37,#b68b2c);
+
+color:white;
+
+text-decoration:none;
+
+border-radius:8px;
+
+transition:.25s;
+
+box-shadow:0 4px 15px rgba(212,175,55,0.25);
+
 }
 
-.button-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212,175,55,0.35);
+.button-link:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 28px rgba(212,175,55,0.4);
+
+}
+
+/* IMPORTANT CARD */
+
+.important{
+
+background:linear-gradient(135deg,#ff5a5a,#ff3c3c);
+
+color:white;
+
+border:none;
+
+}
+
+.important .card-title{
+
+color:white;
+
 }
 
 /* MOBILE */
-@media (max-width: 600px) {
-    header { font-size: 1.8em; }
+
+@media(max-width:600px){
+
+header h1{
+
+font-size:1.9em;
+
 }
+
+.grid{
+
+gap:18px;
+
+padding:0 20px 40px 20px;
+
+}
+
+}
+
 </style>
+
 </head>
+
 <body>
 
 <header>
-Helping Hands Referral System
+
+<h1>Helping Hands Referral System</h1>
+
+<p>Internal referral guide for clinic volunteers and staff</p>
+
 </header>
 
 <div class="grid">
 
-<!-- Important Notice -->
-<div class="card" onclick="toggleCard(this)" style="background: #ff4d4d; border: 2px solid #b30000;">
-  <div class="card-title" style="color: #b68b2c;">*Important* please read before doing any referral</div>
-  <div class="card-content">
-    <ul>
-      <li>Referrals no longer need to be printed, instead, they will be shared on Athena.</li>
-      <li>Please enable information sharing on Athena before doing any referral; ask someone if you do not know how to.</li>
-      <li>This will share the Athena profile of the patient with the provider they are being referred to.</li>
-    </ul>
-    <!-- asdfasfasfsafsafsdfggfsdgsdfsdf-->
-  </div>
+
+<div class="card important" onclick="toggleCard(this)">
+<div class="card-title">Important – Please read before doing any referral</div>
+
+<div class="card-content">
+
+<ul>
+
+<li>Referrals no longer need to be printed. They will now be shared on Athena.</li>
+
+<li>Please enable information sharing on Athena before doing any referral.</li>
+
+<li>This shares the patient's Athena profile with the referred provider.</li>
+
+</ul>
+
+</div>
 </div>
 
-<!-- Gynecologist -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Gynecologist</div>
 <div class="card-content">
+
 <ol>
-<li>Ensure it’s not a preventive women’s health visit. Look for “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.</li>
-<li>Print referral order and place in the bin.</li>
-<li>Go to the patient room and enter their information in the form below:</li>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank" class="button-link">Click here to access form</a>
-<li>Columbus Free Clinic will call the patient to make an appointment.</li>
+
+<li>Ensure it is NOT a preventive women’s health visit.</li>
+
+<li>Print referral order and place in bin.</li>
+
+<li>Enter patient information in the form below.</li>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform" target="_blank" class="button-link">Open Referral Form</a>
+
+<li>Columbus Free Clinic will call the patient.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Women's Health -->
+
 <div class="card" onclick="toggleCard(this)">
-<div class="card-title">Women’s Health</div>
+<div class="card-title">Women's Health</div>
+
 <div class="card-content">
+
 <ol>
-<li>Ensure it’s a 3333333 preventative visit, not a gynecology referral.</li>
-<li>Grab the women’s health scheduling clipboard from the front.</li>
-<li>Go to patient room, ask what time works best, and record Athena ID, DOB, and phone number.</li>
-<li>Give the patient a reminder card (Available at front)</li>
-<li>Go to Athena and schedule the patient at the chosen time.</li>
+
+<li>Confirm this is a preventative visit.</li>
+
+<li>Grab women's health scheduling clipboard.</li>
+
+<li>Ask preferred time and record Athena ID, DOB, phone.</li>
+
+<li>Give patient a reminder card.</li>
+
+<li>Schedule the visit on Athena.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Neurologist -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Neurologist</div>
+
 <div class="card-content">
+
 <ol>
-<li>Neurology visits are done here — check with leadership for neurologist availability, usually once a month on a Thursday.</li>
-<li>Once availability is confirmed, confirm with the patient and schedule them on Athena.</li>
-<li>Make sure to assign the patient to Dr Leon Rosenburg.</li>
+
+<li>Visits are usually once per month on Thursday.</li>
+
+<li>Confirm availability with leadership.</li>
+
+<li>Schedule patient on Athena with Dr Leon Rosenburg.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Cardiologist -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Cardiologist</div>
+
 <div class="card-content">
+
 <ol>
-<li>Print referral and place in the bin.</li>
-<li>Tell patients they will receive a phone call from PhysicianCareConnection to schedule an appointment.</li>
-<li>This is the only FREE cardiology option and appointments are usually booked; instruct patient to keep an eye on their phone.</li>
+
+<li>Print referral and place in bin.</li>
+
+<li>Patient will receive call from PhysicianCareConnection.</li>
+
+<li>This is the only free cardiology option.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Mammograms -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Mammograms</div>
+
 <div class="card-content">
-<p>Done at OSU:</p>
+
 <ol>
+
 <li>Print order and place in bin.</li>
-<li>Ask Trena and she will take care of it.</li>
+
+<li>Ask Trena to process the referral.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Physical Therapy -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Physical Therapy</div>
+
 <div class="card-content">
+
 <ol>
+
 <li>Print referral and place in bin.</li>
-<li>Fill out the form below:</li>
+
+<li>Fill out form below.</li>
+
 <a href="https://docs.google.com/forms/d/e/1FAIpQLScyVMEZP_o_p2joiEmPZEW0zW9HOZ2Jc5pq00L5yvMnt86DPg/viewform" target="_blank" class="button-link">Fill Out Form</a>
-<li>Instruct patients to wait for a phone call to confirm the schedule, and to not go to the clinic without confirmation.</li>
+
+<li>Patient must wait for confirmation phone call.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- EKG -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">EKG</div>
+
 <div class="card-content">
+
 <ol>
-<li>Do NOT print.</li>
-<li>These are done in our clinic, take patient to lab.</li>
+
+<li>Do NOT print referral.</li>
+
+<li>Take patient directly to lab.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Optometry -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Optometry</div>
+
 <div class="card-content">
+
 <ol>
-<li>Instruct patient to go to Dwell community clinic located at (1934 N. 4th Street, 43201).</li>
-<li>Only open on 1st and 3rd Monday of every month from 6PM to 7PM.</li>
+
+<li>Send patient to Dwell Community Clinic.</li>
+
+<li>Address: 1934 N 4th St.</li>
+
+<li>Open 1st and 3rd Monday each month 6-7 PM.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Dental Emergency -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Dental (Emergency)</div>
+
 <div class="card-content">
+
 <ol>
-<li>Print referral order and place in bin.</li>
-<li>Instruct patients that Grace Free Clinic will call them to schedule an appointment.</li>
+
+<li>Print referral order.</li>
+
+<li>Grace Free Clinic will call patient.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Dental (Non Emergency) -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Dental (Non Emergency)</div>
+
 <div class="card-content">
+
 <ol>
-<li>Print referral order and place in bin.</li>
-<li>Instruct patients that Grace Free Clinic will call them to schedule an appointment.</li>
+
+<li>Print referral order.</li>
+
+<li>Grace Free Clinic will call patient.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Diabetic Retinopathy -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Diabetic Retinopathy</div>
+
 <div class="card-content">
+
 <ol>
-<li>Print referral order and place in the bin.</li>
-<li>Click the link below and enter patient information:</li>
+
+<li>Print referral order.</li>
+
+<li>Enter patient info in form below.</li>
+
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSc7ucyZfCXiNSiewGULzYwm2-nFGnByaG4X1M2W7OZkF1KhQw/viewform" target="_blank" class="button-link">Enter Patient Info</a>
-<li>Columbus Free Clinic will call the patient to confirm the appointment.</li>
-<li>Tell patient to only go to the clinic once they receive a call or voicemail.</li>
+
+<li>Clinic will call patient.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Ultrasound -->
+
 <div class="card" onclick="toggleCard(this)">
 <div class="card-title">Ultrasound</div>
+
 <div class="card-content">
+
 <ol>
-<li>Print referral order and place in the bin.</li>
-<li>Click the link below and enter patient information:</li>
+
+<li>Print referral order.</li>
+
+<li>Enter patient info in form below.</li>
+
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfndDqpeMhhH3r4a7HwabMsraMUrNcJV-DBDr5dOwk8wOPE5w/viewform" target="_blank" class="button-link">Enter Patient Info</a>
-<li>Columbus Free Clinic will call the patient to confirm the appointment.</li>
-<li>Tell patient to only go to the clinic once they receive a call or voicemail.</li>
+
+<li>Clinic will call patient to confirm.</li>
+
 </ol>
+
 </div>
 </div>
 
-<!-- Physicals for work and school -->
+
 <div class="card" onclick="toggleCard(this)">
-<div class="card-title">Physicals for work and school</div>
+<div class="card-title">Physicals for Work / School</div>
+
 <div class="card-content">
+
 <ol>
-<li>These are done at Grace Free Clinic</li>
-<li>Click below for ho gfdgfdgdfgfdg gdfgdfgdfggfdfgdgf urs and locations, instruct patient to go there.</li>
-<li>No further action is needed:</li>
-<a href="https://graceclinicsoh.org/locations-hours/" target="_blank" class="button-link">Locations and hours</a>
+
+<li>Done at Grace Free Clinic.</li>
+
+<li>Send patient to the locations below.</li>
+
+<a href="https://graceclinicsoh.org/locations-hours/" target="_blank" class="button-link">View Locations</a>
+
 </ol>
+
 </div>
 </div>
 
-</div> <!-- end grid -->
+
+</div>
+
 
 <script>
-function toggleCard(card) {
-    const content = card.querySelector(".card-content");
-    content.classList.toggle("open");
+
+function toggleCard(card){
+
+const content = card.querySelector(".card-content");
+
+content.classList.toggle("open");
+
 }
+
 </script>
 
 </body>
