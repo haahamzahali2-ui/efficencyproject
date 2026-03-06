@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <title>Helping Hands Referral System</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,110 +19,81 @@ color:#e6eefc;
 /* HEADER */
 
 header{
-
 display:flex;
 align-items:center;
-justify-content:center;
-gap:20px;
+justify-content:space-between;
 
-padding:35px 20px;
-
+padding:20px 30px;
 background:#13284b;
+}
 
-border-bottom:2px solid #4f6fa6;
-
+.logo-area{
+display:flex;
+align-items:center;
+gap:15px;
 }
 
 header img{
-height:70px;
+height:60px;
 }
 
-header h1{
-margin:0;
-font-size:2em;
-color:#e6eefc;
+.admin-btn{
+
+background:#5fa7ff;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+color:white;
+cursor:pointer;
+font-weight:600;
+
 }
 
-/* SEARCH BAR */
+/* SEARCH */
 
 .search-container{
 text-align:center;
-margin-top:35px;
+margin:30px 0;
 }
 
 .search{
-
 width:320px;
 max-width:80%;
-
-padding:12px 16px;
-
+padding:12px;
 border-radius:8px;
-
 border:none;
-
-font-size:15px;
-
 background:#162f5c;
-
 color:white;
-
-outline:none;
-
-}
-
-.search::placeholder{
-color:#9fb6e6;
 }
 
 /* GRID */
 
 .grid{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
 gap:25px;
-
 max-width:1100px;
-
-margin:40px auto;
-
+margin:auto;
 padding:0 25px;
-
 }
 
 /* CARD */
 
 .card{
-
 background:#162f5c;
-
 padding:30px;
-
-border-radius:14px;
-
+border-radius:12px;
 text-align:center;
-
 font-weight:600;
-
 font-size:1.2em;
-
 cursor:pointer;
-
-transition:.25s;
-
 border:1px solid #3c5c93;
-
+transition:.25s;
 }
 
 .card:hover{
-
-transform:translateY(-5px);
-
 background:#1b3b74;
-
+transform:translateY(-4px);
 }
 
 /* MODAL */
@@ -129,50 +101,38 @@ background:#1b3b74;
 .modal{
 
 position:fixed;
-
 top:0;
 left:0;
 
 width:100%;
 height:100%;
 
-background:rgba(0,0,0,0.65);
+background:rgba(0,0,0,.65);
 
 display:flex;
-
 align-items:center;
-
 justify-content:center;
 
 opacity:0;
-
 pointer-events:none;
-
 transition:.3s;
-
 }
 
 .modal.active{
-
 opacity:1;
-
 pointer-events:auto;
-
 }
 
 .modal-box{
 
 background:#13284b;
 
+width:90%;
 max-width:650px;
 
-width:90%;
+padding:35px;
 
-padding:40px;
-
-border-radius:14px;
-
-box-shadow:0 25px 60px rgba(0,0,0,0.5);
+border-radius:12px;
 
 }
 
@@ -180,46 +140,50 @@ box-shadow:0 25px 60px rgba(0,0,0,0.5);
 color:#7da7ff;
 }
 
-.modal-box ol{
-line-height:1.6em;
-}
-
-/* CLOSE */
-
 .close{
-
 position:absolute;
-
 top:20px;
 right:30px;
-
-font-size:30px;
-
-color:white;
-
+font-size:28px;
 cursor:pointer;
-
 }
 
-/* BUTTON */
+/* ADMIN EDIT */
 
-.button-link{
+textarea{
 
-display:inline-block;
+width:100%;
+height:200px;
 
-margin-top:15px;
-
-padding:10px 16px;
-
-background:#5fa7ff;
+background:#0e1f3d;
 
 color:white;
 
-text-decoration:none;
+border:none;
+
+padding:10px;
 
 border-radius:6px;
 
-font-weight:600;
+margin-top:10px;
+
+}
+
+.save-btn{
+
+margin-top:10px;
+
+background:#5fa7ff;
+
+border:none;
+
+padding:10px 14px;
+
+color:white;
+
+border-radius:6px;
+
+cursor:pointer;
 
 }
 
@@ -229,9 +193,15 @@ font-weight:600;
 
 <header>
 
+<div class="logo-area">
+
 <img src="logo.png">
 
-<h1>Helping Hands Referral System</h1>
+<h2>Helping Hands Referral</h2>
+
+</div>
+
+<button class="admin-btn" onclick="adminLogin()">Admin</button>
 
 </header>
 
@@ -249,19 +219,13 @@ onkeyup="searchCards()"
 </div>
 
 
-<div class="grid" id="grid">
+<div class="grid">
 
-<div class="card" onclick="openModal('gyn')">
-Gynecologist
-</div>
+<div class="card" onclick="openModal('cardio')">Cardiologist</div>
 
-<div class="card" onclick="openModal('cardio')">
-Cardiologist
-</div>
+<div class="card" onclick="openModal('gyn')">Gynecologist</div>
 
-<div class="card" onclick="openModal('pt')">
-Physical Therapy
-</div>
+<div class="card" onclick="openModal('pt')">Physical Therapy</div>
 
 </div>
 
@@ -277,91 +241,138 @@ Physical Therapy
 
 <script>
 
-/* REFERRAL CONTENT */
+let adminMode=false
 
-const content = {
+const PASSCODE="1234"
 
-gyn: `
-<h2>Gynecologist Referral</h2>
 
-<ol>
-<li>Confirm this is NOT a preventive women's health visit.</li>
-<li>Print the referral order and place in bin.</li>
-<li>Enter patient information in the referral form.</li>
-</ol>
+let content={
 
-<a class="button-link" href="#">Open Referral Form</a>
-`,
-
-cardio: `
-<h2>Cardiologist Referral</h2>
+cardio:`
+<h2>Cardiologist</h2>
 
 <ol>
 <li>Print referral order.</li>
-<li>Patient will receive a phone call from PhysicianCareConnection.</li>
+<li>Patient receives call from PhysicianCareConnection.</li>
 <li>This is the only free cardiology option.</li>
 </ol>
 `,
 
-pt: `
-<h2>Physical Therapy Referral</h2>
+gyn:`
+<h2>Gynecologist</h2>
+
+<ol>
+<li>Confirm this is NOT a preventive visit.</li>
+<li>Print referral order.</li>
+<li>Enter patient info into form.</li>
+</ol>
+`,
+
+pt:`
+<h2>Physical Therapy</h2>
 
 <ol>
 <li>Print referral order.</li>
-<li>Fill out the referral form.</li>
-<li>Patient will receive a confirmation phone call.</li>
+<li>Fill out referral form.</li>
+<li>Patient will receive confirmation call.</li>
 </ol>
-
-<a class="button-link" href="#">Open Form</a>
 `
 
-};
+}
 
 
-/* OPEN MODAL */
+/* OPEN REFERRAL */
 
 function openModal(type){
 
-document.getElementById("modal").classList.add("active");
+document.getElementById("modal").classList.add("active")
 
-document.getElementById("modalContent").innerHTML = content[type];
+if(adminMode){
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2>Editing: ${type}</h2>
+
+<textarea id="editBox">${content[type]}</textarea>
+
+<button class="save-btn" onclick="saveEdit('${type}')">Save</button>
+
+`
+
+}
+
+else{
+
+document.getElementById("modalContent").innerHTML=content[type]
+
+}
 
 }
 
 
-/* CLOSE MODAL */
+/* SAVE EDIT */
+
+function saveEdit(type){
+
+let newText=document.getElementById("editBox").value
+
+content[type]=newText
+
+alert("Saved!")
+
+}
+
+
+/* CLOSE */
 
 function closeModal(){
 
-document.getElementById("modal").classList.remove("active");
+document.getElementById("modal").classList.remove("active")
 
 }
 
 
-/* ESC KEY CLOSE */
+/* ADMIN LOGIN */
 
-window.addEventListener("keydown",function(e){
+function adminLogin(){
 
-if(e.key === "Escape") closeModal();
+let code=prompt("Enter admin passcode")
 
-});
+if(code===PASSCODE){
+
+adminMode=true
+
+alert("Admin mode enabled")
+
+}
+
+else{
+
+alert("Incorrect passcode")
+
+}
+
+}
 
 
 /* SEARCH */
 
 function searchCards(){
 
-let input = document.getElementById("search").value.toLowerCase();
+let input=document.getElementById("search").value.toLowerCase()
 
-let cards = document.querySelectorAll(".card");
+let cards=document.querySelectorAll(".card")
 
 cards.forEach(card=>{
 
-let text = card.textContent.toLowerCase();
+card.style.display=
 
-card.style.display = text.includes(input) ? "block" : "none";
+card.textContent.toLowerCase().includes(input)
 
-});
+? "block"
+: "none"
+
+})
 
 }
 
