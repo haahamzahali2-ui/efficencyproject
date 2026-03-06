@@ -1,98 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Helping Hands Referral System</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 body {
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:#0e1f3d;
-  color:white;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0e1f3d;
+    color: #ffffff;
 }
 header {
-  text-align:center;
-  padding:20px 0;
-  background:#13284b;
-  font-size:26px;
-  font-weight:600;
+    text-align: center;
+    padding: 20px 0;
+    background: #13284b;
+    font-size: 28px;
+    font-weight: 600;
 }
 .search-area {
-  text-align:center;
-  margin:20px 0;
+    text-align: center;
+    margin: 20px 0;
 }
 .search {
-  width:500px;
-  padding:12px;
-  border-radius:6px;
-  border:none;
-  background:#162f5c;
-  color:white;
-  font-size:16px;
+    width: 600px;
+    max-width: 90%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: #162f5c;
+    color: white;
+    font-size: 16px;
 }
 .grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-  gap:20px;
-  max-width:1000px;
-  margin:20px auto;
-  padding:0 20px 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px 40px 20px;
 }
 .card {
-  background:#162f5c;
-  padding:20px;
-  border-radius:10px;
-  cursor:pointer;
-  transition:.2s;
-  text-align:center;
-  font-weight:500;
+    background: #162f5c;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: center;
+    font-weight: 500;
 }
 .card:hover {
-  background:#1d3e77;
-  transform:translateY(-3px);
+    background: #1d3e77;
+    transform: translateY(-3px);
 }
 .modal {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.7);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
 }
 .modal.active {
-  opacity:1;
-  pointer-events:auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 .modal-box {
-  background:#13284b;
-  padding:40px;
-  width:700px;
-  max-width:95%;
-  border-radius:10px;
-  overflow-y:auto;
-  max-height:90%;
+    background: #13284b;
+    padding: 40px;
+    width: 750px;
+    max-width: 95%;
+    border-radius: 10px;
+    overflow-y: auto;
+    max-height: 90%;
 }
 .close {
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:30px;
-  cursor:pointer;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    cursor: pointer;
 }
 .modal-box a {
-  color:#ffd700;
-  text-decoration:none;
-  font-weight:600;
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
 }
 .modal-box a:hover {
-  text-decoration:underline;
+    text-decoration: underline;
+}
+.modal-box ol {
+    margin-left: 20px;
 }
 </style>
 </head>
@@ -101,14 +105,14 @@ header {
 <header>Helping Hands Referral System</header>
 
 <div class="search-area">
-  <input class="search" id="search" placeholder="Search referrals..." onkeyup="searchReferrals()">
+    <input class="search" id="search" placeholder="Search referrals..." onkeyup="searchReferrals()">
 </div>
 
 <div class="grid" id="grid"></div>
 
 <div class="modal" id="modal">
-  <div class="close" onclick="closeModal()">✕</div>
-  <div class="modal-box" id="modalContent"></div>
+    <div class="close" onclick="closeModal()">✕</div>
+    <div class="modal-box" id="modalContent"></div>
 </div>
 
 <script>
@@ -156,7 +160,7 @@ name:"Mammograms",
 instructions:[
 "These are done at OSU.",
 "Write down 'Mammogram' and the patient’s ID on a sticky note or a piece of paper and give it to Trena.",
-"No further action is needed."
+"No further action needed."
 ]
 },
 {
@@ -244,7 +248,7 @@ instructions:[
 id:16,
 name:"OSU Referrals",
 instructions:[
-"OSU is not free, but has a financial assistance program, may take weeks.",
+"OSU is not free, but has financial assistance. Process may take weeks.",
 "Get a HCAP form from front or online (multi-language). Emphasize proof of income needed.",
 "Form can be emailed, faxed, or mailed to OhioHealth billing. Call 614-566-1546.",
 "Patient will receive contact from OSU. Services not free."
@@ -283,46 +287,49 @@ instructions:[
 "Done at Columbus Department of Public Health, fees apply, sliding scale.",
 "Click for hours/location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
 ]
-}];
+}
+];
 
 // RENDER CARDS
 function render(){
-  const grid=document.getElementById("grid");
-  grid.innerHTML="";
-  referrals.forEach(r=>{
-    const card=document.createElement("div");
-    card.className="card";
-    card.textContent=r.name;
-    card.onclick=()=>openReferral(r.id);
-    grid.appendChild(card);
-  });
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    referrals.forEach(r => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = r.name;
+        card.onclick = () => openReferral(r.id);
+        grid.appendChild(card);
+    });
 }
 
 // SEARCH
 function searchReferrals(){
-  const q=document.getElementById("search").value.toLowerCase();
-  const results=referrals.filter(r=>r.name.toLowerCase().includes(q) || r.instructions.join(" ").toLowerCase().includes(q));
-  const grid=document.getElementById("grid");
-  grid.innerHTML="";
-  results.forEach(r=>{
-    const card=document.createElement("div");
-    card.className="card";
-    card.textContent=r.name;
-    card.onclick=()=>openReferral(r.id);
-    grid.appendChild(card);
-  });
+    const q = document.getElementById("search").value.toLowerCase();
+    const results = referrals.filter(r => r.name.toLowerCase().includes(q) || r.instructions.join(" ").toLowerCase().includes(q));
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    results.forEach(r => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = r.name;
+        card.onclick = () => openReferral(r.id);
+        grid.appendChild(card);
+    });
 }
 
 // MODAL
 function openReferral(id){
-  const r=referrals.find(x=>x.id==id);
-  let content="<h2>"+r.name+"</h2><ol>";
-  r.instructions.forEach(i=>content+="<li>"+i+"</li>");
-  content+="</ol>";
-  document.getElementById("modalContent").innerHTML=content;
-  document.getElementById("modal").classList.add("active");
+    const r = referrals.find(x => x.id==id);
+    let content = "<h2>" + r.name + "</h2><ol>";
+    r.instructions.forEach(i => content += "<li>" + i + "</li>");
+    content += "</ol>";
+    document.getElementById("modalContent").innerHTML = content;
+    document.getElementById("modal").classList.add("active");
 }
-function closeModal(){document.getElementById("modal").classList.remove("active");}
+function closeModal(){
+    document.getElementById("modal").classList.remove("active");
+}
 
 // INITIAL RENDER
 render();
