@@ -7,562 +7,244 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-body{
-margin:0;
-font-family:Inter;
-background:#0e1f3d;
-color:white;
+body {
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#0e1f3d;
+  color:white;
 }
 
 /* HEADER */
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px 40px;
-
-background:#13284b;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.logo img{
-height:55px;
-}
-
-header h1{
-font-size:22px;
-margin:0;
-}
-
-.admin-btn{
-background:#4ea2ff;
-border:none;
-color:white;
-padding:8px 14px;
-border-radius:6px;
-cursor:pointer;
+header {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px 40px;
+  background:#13284b;
+  font-size:24px;
+  font-weight:600;
 }
 
 /* SEARCH */
-
-.search-area{
-text-align:center;
-margin:30px;
+.search-area {
+  text-align:center;
+  margin:30px;
 }
-
-.search{
-width:400px;
-padding:12px;
-border-radius:6px;
-border:none;
-background:#162f5c;
-color:white;
+.search {
+  width:400px;
+  padding:12px;
+  border-radius:6px;
+  border:none;
+  background:#162f5c;
+  color:white;
 }
 
 /* CATEGORY */
-
-.categories{
-text-align:center;
-margin-bottom:20px;
+.categories {
+  text-align:center;
+  margin-bottom:20px;
 }
-
-.cat-btn{
-background:#1b3b74;
-border:none;
-padding:8px 14px;
-margin:4px;
-border-radius:6px;
-color:white;
-cursor:pointer;
+.cat-btn {
+  background:#1b3b74;
+  border:none;
+  padding:8px 14px;
+  margin:4px;
+  border-radius:6px;
+  color:white;
+  cursor:pointer;
 }
 
 /* GRID */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-gap:20px;
-max-width:1100px;
-margin:auto;
-padding:20px;
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:20px;
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
 }
 
 /* CARD */
-
-.card{
-background:#162f5c;
-padding:25px;
-border-radius:10px;
-cursor:pointer;
-transition:.2s;
-position:relative;
+.card {
+  background:#162f5c;
+  padding:25px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.2s;
+  text-align:center;
 }
-
-.card:hover{
-background:#1d3e77;
-transform:translateY(-3px);
-}
-
-.pin{
-position:absolute;
-top:8px;
-right:10px;
-cursor:pointer;
+.card:hover {
+  background:#1d3e77;
+  transform:translateY(-3px);
 }
 
 /* MODAL */
-
-.modal{
-position:fixed;
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:rgba(0,0,0,.7);
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-opacity:0;
-pointer-events:none;
-transition:.3s;
+.modal {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
 }
-
-.modal.active{
-opacity:1;
-pointer-events:auto;
+.modal.active {
+  opacity:1;
+  pointer-events:auto;
 }
-
-.modal-box{
-background:#13284b;
-padding:40px;
-width:600px;
-max-width:90%;
-border-radius:10px;
+.modal-box {
+  background:#13284b;
+  padding:40px;
+  width:600px;
+  max-width:90%;
+  border-radius:10px;
 }
-
-.close{
-position:absolute;
-top:20px;
-right:30px;
-font-size:30px;
-cursor:pointer;
+.close {
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  cursor:pointer;
 }
-
-/* ADMIN PANEL */
-
-.admin-panel{
-position:fixed;
-bottom:20px;
-right:20px;
-
-background:#13284b;
-padding:15px;
-border-radius:10px;
-
-display:none;
-}
-
-.admin-panel button{
-margin:4px;
-}
-
-/* TEXTAREA */
-
-textarea{
-width:100%;
-height:200px;
-background:#0e1f3d;
-color:white;
-border:none;
-padding:10px;
-margin-top:10px;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-<img src="logo.png">
-<h1>Helping Hands Referral System</h1>
-</div>
-
-<button class="admin-btn" onclick="adminLogin()">Admin</button>
-
+Helping Hands Referral System
 </header>
 
 <div class="search-area">
-
 <input
-class="search"
-id="search"
-placeholder="Search referrals..."
-onkeyup="searchReferrals()">
-
+  class="search"
+  id="search"
+  placeholder="Search referrals..."
+  onkeyup="searchReferrals()">
 </div>
 
 <div class="categories" id="categories"></div>
-
 <div class="grid" id="grid"></div>
 
 <div class="modal" id="modal">
-
-<div class="close" onclick="closeModal()">✕</div>
-
-<div class="modal-box" id="modalContent"></div>
-
-</div>
-
-<div class="admin-panel" id="adminPanel">
-
-<button onclick="addReferral()">Add Referral</button>
-
+  <div class="close" onclick="closeModal()">✕</div>
+  <div class="modal-box" id="modalContent"></div>
 </div>
 
 <script>
-
-/* ADMIN */
-
-let admin=false
-const PASSCODE="helpinghands"
-
-/* LOAD DATA */
-
+// REFERRALS
 let referrals=[
-{
-id:1,
-name:"Cardiologist",
-category:"Cardiology",
-pinned:false,
-instructions:[
-"Print referral order",
-"Patient receives call from PhysicianCareConnection",
-"Only free cardiology option"
-]
-},
+  {
+    id:1,
+    name:"Cardiologist",
+    category:"Cardiology",
+    instructions:[
+      "Print referral order",
+      "Patient receives call from PhysicianCareConnection",
+      "Only free cardiology option"
+    ]
+  },
+  {
+    id:2,
+    name:"Gynecologist",
+    category:"Women's Health",
+    instructions:[
+      "Confirm NOT preventive visit",
+      "Print referral order",
+      "Enter patient info in referral form"
+    ]
+  },
+  {
+    id:3,
+    name:"Physical Therapy",
+    category:"Rehabilitation",
+    instructions:[
+      "Print referral order",
+      "Fill PT form",
+      "Patient receives confirmation call"
+    ]
+  }
+];
 
-{
-id:2,
-name:"Gynecologist",
-category:"Women's Health",
-pinned:false,
-instructions:[
-"Confirm NOT preventive visit",
-"Print referral order",
-"Enter patient info in referral form"
-]
-},
-
-{
-id:3,
-name:"Physical Therapy",
-category:"Rehabilitation",
-pinned:false,
-instructions:[
-"Print referral order",
-"Fill PT form",
-"Patient receives confirmation call"
-]
-}
-
-]
-
-/* LOAD SAVED DATA */
-
-let saved=localStorage.getItem("referrals")
-
-if(saved){
-referrals=JSON.parse(saved)
-}
-
-/* SAVE */
-
-function save(){
-
-localStorage.setItem(
-"referrals",
-JSON.stringify(referrals)
-)
-
-}
-
-/* RENDER */
-
+// RENDER CARDS
 function render(){
-
-let grid=document.getElementById("grid")
-
-grid.innerHTML=""
-
-let sorted=[...referrals]
-
-sorted.sort((a,b)=>b.pinned-a.pinned)
-
-sorted.forEach(r=>{
-
-let card=document.createElement("div")
-
-card.className="card"
-
-card.innerHTML=`
-
-<div class="pin" onclick="togglePin(${r.id},event)">
-${r.pinned?"⭐":""}
-</div>
-
-${r.name}
-
-`
-
-card.onclick=()=>openReferral(r.id)
-
-grid.appendChild(card)
-
-})
-
-renderCategories()
-
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  referrals.forEach(r=>{
+    let card=document.createElement("div");
+    card.className="card";
+    card.textContent=r.name;
+    card.onclick=()=>openReferral(r.id);
+    grid.appendChild(card);
+  });
+  renderCategories();
 }
 
-/* CATEGORY BUTTONS */
-
+// CATEGORY BUTTONS
 function renderCategories(){
-
-let cats=[...new Set(referrals.map(r=>r.category))]
-
-let container=document.getElementById("categories")
-
-container.innerHTML=""
-
-cats.forEach(c=>{
-
-let btn=document.createElement("button")
-
-btn.className="cat-btn"
-
-btn.textContent=c
-
-btn.onclick=()=>filterCategory(c)
-
-container.appendChild(btn)
-
-})
-
+  const cats=[...new Set(referrals.map(r=>r.category))];
+  const container=document.getElementById("categories");
+  container.innerHTML="";
+  cats.forEach(c=>{
+    const btn=document.createElement("button");
+    btn.className="cat-btn";
+    btn.textContent=c;
+    btn.onclick=()=>filterCategory(c);
+    container.appendChild(btn);
+  });
 }
 
-/* FILTER */
-
+// FILTER
 function filterCategory(cat){
-
-let results=referrals.filter(r=>r.category==cat)
-
-displayResults(results)
-
+  const results=referrals.filter(r=>r.category==cat);
+  displayResults(results);
 }
-
 function displayResults(list){
-
-let grid=document.getElementById("grid")
-
-grid.innerHTML=""
-
-list.forEach(r=>{
-
-let card=document.createElement("div")
-
-card.className="card"
-
-card.textContent=r.name
-
-card.onclick=()=>openReferral(r.id)
-
-grid.appendChild(card)
-
-})
-
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  list.forEach(r=>{
+    const card=document.createElement("div");
+    card.className="card";
+    card.textContent=r.name;
+    card.onclick=()=>openReferral(r.id);
+    grid.appendChild(card);
+  });
 }
 
-/* SEARCH */
-
+// SEARCH
 function searchReferrals(){
-
-let q=document.getElementById("search").value.toLowerCase()
-
-let results=referrals.filter(r=>
-
-r.name.toLowerCase().includes(q) ||
-
-r.instructions.join(" ").toLowerCase().includes(q)
-
-)
-
-displayResults(results)
-
+  const q=document.getElementById("search").value.toLowerCase();
+  const results=referrals.filter(r=>
+    r.name.toLowerCase().includes(q) ||
+    r.instructions.join(" ").toLowerCase().includes(q)
+  );
+  displayResults(results);
 }
 
-/* OPEN REFERRAL */
-
+// OPEN MODAL
 function openReferral(id){
-
-let r=referrals.find(x=>x.id==id)
-
-let content=""
-
-if(admin){
-
-content=`
-
-<h2>Edit: ${r.name}</h2>
-
-<textarea id="editBox">${r.instructions.join("\n")}</textarea>
-
-<button onclick="saveEdit(${id})">Save</button>
-
-<button onclick="deleteReferral(${id})">Delete</button>
-
-`
-
-}else{
-
-content=`<h2>${r.name}</h2><ol>`
-
-r.instructions.forEach(i=>{
-
-content+=`<li>${i}</li>`
-
-})
-
-content+="</ol>"
-
+  const r=referrals.find(x=>x.id==id);
+  let content="<h2>"+r.name+"</h2><ol>";
+  r.instructions.forEach(i=>{
+    content+="<li>"+i+"</li>";
+  });
+  content+="</ol>";
+  document.getElementById("modalContent").innerHTML=content;
+  document.getElementById("modal").classList.add("active");
 }
 
-document.getElementById("modalContent").innerHTML=content
-
-document.getElementById("modal").classList.add("active")
-
-}
-
-/* SAVE EDIT */
-
-function saveEdit(id){
-
-let r=referrals.find(x=>x.id==id)
-
-let text=document.getElementById("editBox").value
-
-r.instructions=text.split("\n")
-
-save()
-
-render()
-
-alert("Saved")
-
-}
-
-/* DELETE */
-
-function deleteReferral(id){
-
-referrals=referrals.filter(r=>r.id!=id)
-
-save()
-
-render()
-
-closeModal()
-
-}
-
-/* ADD */
-
-function addReferral(){
-
-let name=prompt("Referral name")
-
-let category=prompt("Category")
-
-referrals.push({
-
-id:Date.now(),
-name:name,
-category:category,
-pinned:false,
-instructions:["Edit instructions"]
-
-})
-
-save()
-
-render()
-
-}
-
-/* PIN */
-
-function togglePin(id,e){
-
-e.stopPropagation()
-
-let r=referrals.find(x=>x.id==id)
-
-r.pinned=!r.pinned
-
-save()
-
-render()
-
-}
-
-/* MODAL */
-
+// CLOSE MODAL
 function closeModal(){
-
-document.getElementById("modal").classList.remove("active")
-
+  document.getElementById("modal").classList.remove("active");
 }
 
-/* ADMIN LOGIN */
-
-function adminLogin(){
-
-let code=prompt("Enter admin passcode")
-
-if(code===PASSCODE){
-
-admin=true
-
-document.getElementById("adminPanel").style.display="block"
-
-alert("Admin mode enabled")
-
-}else{
-
-alert("Wrong passcode")
-
-}
-
-}
-
-/* START */
-
-render()
-
+// START
+render();
 </script>
 
 </body>
