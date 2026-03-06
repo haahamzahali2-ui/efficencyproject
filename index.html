@@ -197,13 +197,13 @@ header {
 </div>
 
 <script>
-// REFERRALS ARRAY
+// FULL REFERRALS LIST
 const referrals = [
 {
-    id: -1,
-    name: "*Important* Please Read Before Doing Any Referral",
-    instructions: ["Referral forms no longer need to be printed, instead they will be sent electronically. Please enable patient information sharing on Athena."],
-    cardClass: "important-card"
+id:-1,
+name:"*Important* Please Read Before Doing Any Referral",
+instructions:["Referral forms no longer need to be printed, instead they will be sent electronically. Please enable patient information sharing on Athena."],
+cardClass:"important-card"
 },
 {
 id:0,
@@ -224,42 +224,225 @@ instructions:[
 "Go to Athena and schedule the patient at the chosen time."
 ]
 },
-// ... include all other previous referrals here ...
-// ADDITIONAL REFERRALS (Colonoscopy, Retinopathy, Ultrasound, Dentist)
 {
-    id:100,
-    name:"Colonoscopy",
-    instructions:[
-        "Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSezqgKW7HCSaD6bzLJU_Oie_WyP-M16261jbMKlD2zt_dS-rg/viewform' target='_blank'>Click Here</a>",
-        "Columbus Free Clinic will call the patient to make an appointment."
-    ]
+id:2,
+name:"Neurologist",
+instructions:[
+"Neurology visits are done here, check with supervisor for neurologist availability.",
+"Once availability is confirmed, confirm the date and time with the patient and schedule them on Athena.",
+"Make sure to assign the patient to Dr Leon Rosenburg."
+]
 },
 {
-    id:101,
-    name:"Retinopathy",
-    instructions:[
-        "Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSc7ucyZfCXiNSiewGULzYwm2-nFGnByaG4X1M2W7OZkF1KhQw/viewform' target='_blank'>Click Here</a>",
-        "Columbus Free Clinic will call the patient to make an appointment."
-    ]
+id:3,
+name:"Cardiologist",
+instructions:[
+"Tell the patient they will receive a phone call from PhysicianCareConnection (Free) to schedule an appointment.",
+"It takes ~2 weeks to receive this call and there may be a long wait time. Instruct patient to pick up their phone when they call.",
+"Back up option for urgent cases: Primary One Health, sliding scale, income proof needed and patient must be in their system. Check with shift lead."
+]
 },
 {
-    id:102,
-    name:"Ultrasound",
-    instructions:[
-        "Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSfndDqpeMhhH3r4a7HwabMsraMUrNcJV-DBDr5dOwk8wOPE5w/viewform' target='_blank'>Click Here</a>",
-        "Columbus Free Clinic will call the patient to make an appointment."
-    ]
+id:4,
+name:"Mammograms",
+instructions:[
+"These are done at OSU.",
+"Write down 'Mammogram' and the patient’s ID on a sticky note or a piece of paper and give it to Trena.",
+"No further action needed."
+]
 },
 {
-    id:103,
-    name:"Dentist",
+id:5,
+name:"Physical Therapy",
+instructions:[
+"Option 1: Columbus Free Clinic (5:40-8pm Thursdays Only). Enter patient info in form: <a href='https://docs.google.com/forms/d/e/1FAIpQLScyVMEZP_o_p2joiEmPZEW0zW9HOZ2Jc5pq00L5yvMnt86DPg/viewform' target='_blank'>Click Here</a>. Clinic will call patient.",
+"Option 2: Grace Linden location (1st & 3rd Wednesdays 11am-1pm, Saturdays 9-12pm). Write 'PT referral send to Grace' + patient ID on sticky note, give to shift lead. Patient will receive call from Grace Clinic."
+]
+},
+{
+id:6,
+name:"EKG",
+instructions:[
+"EKGs are done here. Take the patient to the lab.",
+"No further action needed."
+]
+},
+{
+id:7,
+name:"Annual Physicals for work or school",
+instructions:[
+"EKGs are done here. Tell Patient to go to Grace Free Clinic.",
+"Refer to this website for hours and locations: <a href='https://graceclinicsoh.org/locations-hours/' target='_blank'>Click Here</a>."
+]
+},
+{
+id:8,
+name:"Urology",
+instructions:[
+"Tell the patient they will receive a phone call from PhysicianCareConnection (Free) to schedule an appointment.",
+"Backup option: OhioHealth (Sliding Scale). Only use if provider requests it for a complex case."
+]
+},
+{
+id:9,
+name:"Cancer Screening",
+instructions:[
+"This includes Cancer-related mammograms, PSA, FIT, Colonoscopy.",
+"Grab a Columbus Cancer Clinic from the front and give it to the patient. They will need to call to make an appointment.",
+"In case a ½ sheet is not available, call 614-263-5006."
+]
+},
+{
+id:10,
+name:"Podiatry",
+instructions:["Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."]
+},
+{
+id:11,
+name:"Optometry",
+instructions:[
+"Grab a Dwell ½ sheet from the front and give it to the patient.",
+"When? 1st and 3rd Monday of every month 6-7pm",
+"Where? 1934 N. 4th Street (Dwell Community Church), No appointment needed."
+]
+},
+{
+id:12,
+name:"Brain and Spine",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:13,
+name:"ENT",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:14,
+name:"Trauma Surgery",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:15,
+name:"Orthopedics",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:16,
+name:"Sports Medicine",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:17,
+name:"General Surgery",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:18,
+name:"Oncology",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:19,
+name:"X-Ray",
+instructions:[
+"Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
+"Grab a Radiology Assist ½ sheet, write price & location, give to patient."
+]
+},
+{
+id:20,
+name:"CT Scans",
+instructions:[
+"Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
+"Grab a Radiology Assist ½ sheet, write price & location, give to patient."
+]
+},
+{
+id:21,
+name:"MRI",
+instructions:[
+"Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
+"Grab a Radiology Assist ½ sheet, write price & location, give to patient."
+]
+},
+{
+id:22,
+name:"OSU Referrals",
+instructions:[
+"OSU is not free, but has financial assistance. Process may take weeks.",
+"Get a HCAP form from front or online (multi-language). Emphasize proof of income needed.",
+"Form can be emailed, faxed, or mailed to OhioHealth billing. Call 614-566-1546.",
+"Patient will receive contact from OSU. Services not free."
+]
+},
+{
+id:23,
+name:"OhioHealth Referrals",
+instructions:[
+"OhioHealth is not free, financial assistance may take 6-8 weeks.",
+"Get a HCAP form from front or online (multi-language). Emphasize proof of income needed.",
+"Form can be emailed, faxed, or mailed to OhioHealth billing. Call 614-566-1546.",
+"Patient will receive contact from OhioHealth. Services not free."
+]
+},
+{
+id:24,
+name:"STD/STI Screenings",
+instructions:[
+"Done at Columbus Department of Public Health, fees apply, sliding scale.",
+"Click for hours/location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
+]
+},
+{
+id:25,
+name:"Pregnancy Testing",
+instructions:[
+"Done at Columbus Department of Public Health, fees apply, sliding scale.",
+"Click for hours/location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
+]
+},
+{
+id:26,
+name:"Immunization",
+instructions:[
+"Done at Columbus Department of Public Health, fees apply, sliding scale.",
+"Click for hours/location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
+]
+},
+// NEW REFERRALS
+{
+id:27,
+name:"Colonoscopy",
+instructions:[
+"Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSezqgKW7HCSaD6bzLJU_Oie_WyP-M16261jbMKlD2zt_dS-rg/viewform' target='_blank'>Click Here</a>",
+"Columbus Free Clinic will call the patient to make an appointment."
+]
+},
+{
+id:28,
+name:"Retinopathy",
+instructions:[
+"Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSc7ucyZfCXiNSiewGULzYwm2-nFGnByaG4X1M2W7OZkF1KhQw/viewform' target='_blank'>Click Here</a>",
+"Columbus Free Clinic will call the patient to make an appointment."
+]
+},
+{
+id:29,
+name:"Ultrasound",
+instructions:[
+"Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSfndDqpeMhhH3r4a7HwabMsraMUrNcJV-DBDr5dOwk8wOPE5w/viewform' target='_blank'>Click Here</a>",
+"Columbus Free Clinic will call the patient to make an appointment."
+]
+},
+{
+id:30,
+name:"Dentist",
 instructions:[
 "Option 1: PCC, the patient will need to call to make an appointment: <a href='https://www.pcchealth.org/medical' target='_blank'>Click Here</a>",
 "Option 2: Grace Clinic Linden and Delaware ONLY, the patient will need to call to make an appointment: <a href='https://graceclinicsoh.org/locations-hours' target='_blank'>Click Here</a>",
 "Option 3 (Not Free but reduced): PrimaryOne, the patient will need to call to make an appointment: <a href='https://www.primaryonehealth.org/services/dental' target='_blank'>Click Here</a>"
 ]
 }
-// You can continue adding the rest of your referrals in the same format
 ];
 
 // RENDER CARDS
@@ -304,16 +487,3 @@ function openReferral(id){
     let content = "<div class='close' onclick='closeModal()'>✕</div><h2>" + r.name + "</h2><ol>";
     r.instructions.forEach(i => content += "<li>" + i + "</li>");
     content += "</ol>";
-    document.getElementById("modalContent").innerHTML = content;
-    document.getElementById("modal").classList.add("active");
-}
-function closeModal(){
-    document.getElementById("modal").classList.remove("active");
-}
-
-// INITIAL RENDER
-render();
-</script>
-
-</body>
-</html>
