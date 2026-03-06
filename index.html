@@ -11,7 +11,6 @@ body {
   background:#0e1f3d;
   color:white;
 }
-/* HEADER */
 header {
   text-align:center;
   padding:20px 0;
@@ -19,14 +18,12 @@ header {
   font-size:26px;
   font-weight:600;
 }
-
-/* SEARCH */
 .search-area {
   text-align:center;
   margin:20px 0;
 }
 .search {
-  width:450px;
+  width:500px;
   padding:12px;
   border-radius:6px;
   border:none;
@@ -34,8 +31,6 @@ header {
   color:white;
   font-size:16px;
 }
-
-/* GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
@@ -44,8 +39,6 @@ header {
   margin:20px auto;
   padding:0 20px 40px 20px;
 }
-
-/* CARD */
 .card {
   background:#162f5c;
   padding:20px;
@@ -59,8 +52,6 @@ header {
   background:#1d3e77;
   transform:translateY(-3px);
 }
-
-/* MODAL */
 .modal {
   position:fixed;
   top:0;
@@ -110,11 +101,7 @@ header {
 <header>Helping Hands Referral System</header>
 
 <div class="search-area">
-  <input
-    class="search"
-    id="search"
-    placeholder="Search referrals..."
-    onkeyup="searchReferrals()">
+  <input class="search" id="search" placeholder="Search referrals..." onkeyup="searchReferrals()">
 </div>
 
 <div class="grid" id="grid"></div>
@@ -125,136 +112,178 @@ header {
 </div>
 
 <script>
-// REFERRALS DATA
-const referrals = [
-  {
-    id:1,
-    name:"Gynecologist",
-    instructions:[
-      "Ensure it’s not a preventive women’s health visit. Look for “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.",
-      "Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform' target='_blank'>Click Here</a>",
-      "Columbus Free Clinic will call the patient to make an appointment"
-    ]
-  },
-  {
-    id:2,
-    name:"Women’s Health",
-    instructions:[
-      "Ensure it’s a preventative visit, not a gynecology referral.",
-      "Grab the women’s health scheduling clipboard from the front, ask patient what time and date works best, write their information on the clipboard (Athena ID, name, phone number, DOB)",
-      "Give the patient an appointment reminder card (Available at front)",
-      "Go to Athena and schedule the patient at the chosen time."
-    ]
-  },
-  {
-    id:3,
-    name:"Neurologist",
-    instructions:[
-      "Neurology visits are done here, check with supervisor for neurologist availability.",
-      "Once availability is confirmed, confirm the date and time with the patient and schedule them on Athena.",
-      "Make sure to assign the patient to Dr Leon Rosenburg."
-    ]
-  },
-  {
-    id:4,
-    name:"Cardiologist",
-    instructions:[
-      "Tell the patient they will receive a phone call from PhysicianCareConnection (Free) to schedule an appointment.",
-      "It takes ~2 weeks to receive this call and there may be a long wait time. Instruct patient to pick up their phone when they call.",
-      "Back up option for urgent cases: Primary One Health, sliding scale, income proof needed. Please check with shift lead."
-    ]
-  },
-  {
-    id:5,
-    name:"Mammograms",
-    instructions:[
-      "These are done at OSU.",
-      "Write down 'Mammogram' and the patient’s ID on a sticky note or a piece of paper and give it to Trena.",
-      "No further action is needed."
-    ]
-  },
-  {
-    id:6,
-    name:"Physical Therapy",
-    instructions:[
-      "Option 1: Columbus Free Clinic (5:40-8pm Thursdays Only). Enter patient info in form: <a href='https://docs.google.com/forms/d/e/1FAIpQLScyVMEZP_o_p2joiEmPZEW0zW9HOZ2Jc5pq00L5yvMnt86DPg/viewform' target='_blank'>Click Here</a>. Clinic will call patient.",
-      "Option 2: Grace Linden location (1st & 3rd Wednesdays 11am-1pm, Saturdays 9-12pm). Write 'PT referral send to Grace' + patient ID on sticky note, give to shift lead. Patient will receive call from Grace Clinic."
-    ]
-  },
-  {
-    id:7,
-    name:"EKG",
-    instructions:[
-      "EKGs are done here. Take the patient to the lab.",
-      "No further action needed."
-    ]
-  },
-  {
-    id:8,
-    name:"Annual Physicals for work or school",
-    instructions:[
-      "EKGs are done here. Tell Patient to go to Grace Free Clinic.",
-      "Refer to this website for hours and locations: <a href='https://graceclinicsoh.org/locations-hours/' target='_blank'>Click Here</a>."
-    ]
-  },
-  {
-    id:9,
-    name:"Urology",
-    instructions:[
-      "Tell the patient they will receive a phone call from PhysicianCareConnection (Free) to schedule an appointment.",
-      "Backup option: OhioHealth (Sliding Scale). Only use if provider requests it for a complex case."
-    ]
-  },
-  {
-    id:10,
-    name:"STD/STI screenings",
-    instructions:[
-      "Done at Columbus Department of Public Health, fees apply but on a sliding scale.",
-      "Click for hours and location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
-    ]
-  },
-  {
-    id:11,
-    name:"Pregnancy Testing",
-    instructions:[
-      "Done at Columbus Department of Public Health, fees apply but on a sliding scale.",
-      "Click for hours and location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
-    ]
-  },
-  {
-    id:12,
-    name:"Immunization",
-    instructions:[
-      "Done at Columbus Department of Public Health, fees apply but on a sliding scale.",
-      "Click for hours and location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
-    ]
-  },
-  {
-    id:13,
-    name:"X-Ray",
-    instructions:[
-      "Click link to fill info, refer to Athena and ask for help if needed: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
-      "Grab Radiology Assist ½ sheet, write price & location, give to patient."
-    ]
-  },
-  {
-    id:14,
-    name:"CT Scans",
-    instructions:[
-      "Click link to fill info, refer to Athena and ask for help if needed: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
-      "Grab Radiology Assist ½ sheet, write price & location, give to patient."
-    ]
-  },
-  {
-    id:15,
-    name:"MRI",
-    instructions:[
-      "Click link to fill info, refer to Athena and ask for help if needed: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
-      "Grab Radiology Assist ½ sheet, write price & location, give to patient."
-    ]
-  }
-  // Add more referrals following same structure if needed
-];
+const referrals=[
+{
+id:1,
+name:"Gynecologist",
+instructions:[
+"Ensure it’s not a preventive women’s health visit. Look for “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.",
+"Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform' target='_blank'>Click Here</a>",
+"Columbus Free Clinic will call the patient to make an appointment"
+]
+},
+{
+id:2,
+name:"Women’s Health",
+instructions:[
+"Ensure it’s a preventative visit, not a gynecology referral.",
+"Grab the women’s health scheduling clipboard from the front, ask patient what time and date works best, write their information on the clipboard (Athena ID, name, phone number, DOB)",
+"Give the patient an appointment reminder card (Available at front)",
+"Go to Athena and schedule the patient at the chosen time."
+]
+},
+{
+id:3,
+name:"Neurologist",
+instructions:[
+"Neurology visits are done here, check with supervisor for neurologist availability.",
+"Once availability is confirmed, confirm the date and time with the patient and schedule them on Athena.",
+"Make sure to assign the patient to Dr Leon Rosenburg."
+]
+},
+{
+id:4,
+name:"Cardiologist",
+instructions:[
+"Tell the patient they will receive a phone call from PhysicianCareConnection (Free) to schedule an appointment.",
+"It takes ~2 weeks to receive this call and there may be a long wait time. Instruct patient to pick up their phone when they call.",
+"Back up option for urgent cases: Primary One Health, sliding scale, income proof needed and patient must be in their system. Check with shift lead."
+]
+},
+{
+id:5,
+name:"Mammograms",
+instructions:[
+"These are done at OSU.",
+"Write down 'Mammogram' and the patient’s ID on a sticky note or a piece of paper and give it to Trena.",
+"No further action is needed."
+]
+},
+{
+id:6,
+name:"Physical Therapy",
+instructions:[
+"Option 1: Columbus Free Clinic (5:40-8pm Thursdays Only). Enter patient info in form: <a href='https://docs.google.com/forms/d/e/1FAIpQLScyVMEZP_o_p2joiEmPZEW0zW9HOZ2Jc5pq00L5yvMnt86DPg/viewform' target='_blank'>Click Here</a>. Clinic will call patient.",
+"Option 2: Grace Linden location (1st & 3rd Wednesdays 11am-1pm, Saturdays 9-12pm). Write 'PT referral send to Grace' + patient ID on sticky note, give to shift lead. Patient will receive call from Grace Clinic."
+]
+},
+{
+id:7,
+name:"EKG",
+instructions:[
+"EKGs are done here. Take the patient to the lab.",
+"No further action needed."
+]
+},
+{
+id:8,
+name:"Annual Physicals for work or school",
+instructions:[
+"EKGs are done here. Tell Patient to go to Grace Free Clinic.",
+"Refer to this website for hours and locations: <a href='https://graceclinicsoh.org/locations-hours/' target='_blank'>Click Here</a>."
+]
+},
+{
+id:9,
+name:"Urology",
+instructions:[
+"Tell the patient they will receive a phone call from PhysicianCareConnection (Free) to schedule an appointment.",
+"Backup option: OhioHealth (Sliding Scale). Only use if provider requests it for a complex case."
+]
+},
+{
+id:10,
+name:"Cancer Screening",
+instructions:[
+"This includes Cancer-related mammograms, PSA, FIT, Colonoscopy.",
+"Grab a Columbus Cancer Clinic from the front and give it to the patient. They will need to call to make an appointment.",
+"In case a ½ sheet is not available, call 614-263-5006."
+]
+},
+{
+id:11,
+name:"Podiatry",
+instructions:[
+"Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."
+]
+},
+{
+id:12,
+name:"Optometry",
+instructions:[
+"Grab a Dwell ½ sheet from the front and give it to the patient.",
+"When? 1st and 3rd Monday of every month 6-7pm",
+"Where? 1934 N. 4th Street (Dwell Community Church), No appointment needed."
+]
+},
+{
+id:13,
+name:"X-Ray",
+instructions:[
+"Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
+"Grab a Radiology Assist ½ sheet, write price & location, give to patient."
+]
+},
+{
+id:14,
+name:"CT Scans",
+instructions:[
+"Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
+"Grab a Radiology Assist ½ sheet, write price & location, give to patient."
+]
+},
+{
+id:15,
+name:"MRI",
+instructions:[
+"Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
+"Grab a Radiology Assist ½ sheet, write price & location, give to patient."
+]
+},
+{
+id:16,
+name:"OSU Referrals",
+instructions:[
+"OSU is not free, but has a financial assistance program, may take weeks.",
+"Get a HCAP form from front or online (multi-language). Emphasize proof of income needed.",
+"Form can be emailed, faxed, or mailed to OhioHealth billing. Call 614-566-1546.",
+"Patient will receive contact from OSU. Services not free."
+]
+},
+{
+id:17,
+name:"OhioHealth Referrals",
+instructions:[
+"OhioHealth is not free, financial assistance may take 6-8 weeks.",
+"Get a HCAP form from front or online (multi-language). Emphasize proof of income needed.",
+"Form can be emailed, faxed, or mailed to OhioHealth billing. Call 614-566-1546.",
+"Patient will receive contact from OhioHealth. Services not free."
+]
+},
+{
+id:18,
+name:"STD/STI screenings",
+instructions:[
+"Done at Columbus Department of Public Health, fees apply, sliding scale.",
+"Click for hours/location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
+]
+},
+{
+id:19,
+name:"Pregnancy Testing",
+instructions:[
+"Done at Columbus Department of Public Health, fees apply, sliding scale.",
+"Click for hours/location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
+]
+},
+{
+id:20,
+name:"Immunization",
+instructions:[
+"Done at Columbus Department of Public Health, fees apply, sliding scale.",
+"Click for hours/location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
+]
+}];
 
 // RENDER CARDS
 function render(){
@@ -269,13 +298,10 @@ function render(){
   });
 }
 
-// SEARCH FUNCTION
+// SEARCH
 function searchReferrals(){
   const q=document.getElementById("search").value.toLowerCase();
-  const results = referrals.filter(r=>
-    r.name.toLowerCase().includes(q) ||
-    r.instructions.join(" ").toLowerCase().includes(q)
-  );
+  const results=referrals.filter(r=>r.name.toLowerCase().includes(q) || r.instructions.join(" ").toLowerCase().includes(q));
   const grid=document.getElementById("grid");
   grid.innerHTML="";
   results.forEach(r=>{
@@ -287,20 +313,16 @@ function searchReferrals(){
   });
 }
 
-// MODAL FUNCTIONS
+// MODAL
 function openReferral(id){
   const r=referrals.find(x=>x.id==id);
   let content="<h2>"+r.name+"</h2><ol>";
-  r.instructions.forEach(i=>{
-    content+="<li>"+i+"</li>";
-  });
+  r.instructions.forEach(i=>content+="<li>"+i+"</li>");
   content+="</ol>";
   document.getElementById("modalContent").innerHTML=content;
   document.getElementById("modal").classList.add("active");
 }
-function closeModal(){
-  document.getElementById("modal").classList.remove("active");
-}
+function closeModal(){document.getElementById("modal").classList.remove("active");}
 
 // INITIAL RENDER
 render();
