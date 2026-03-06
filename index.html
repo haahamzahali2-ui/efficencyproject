@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Helping Hands Referral System</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
+<style>. 
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -185,6 +185,11 @@ header {
 </div>
 
 <script>
+    // GOOGLE SHEETS TRACKING
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyl9-CY70Y5HYpIbOmFlVU0vX2fVzRRi1nrqBBx_FBUnBReu-4klLK_D3y39310MRVI7Q/exec";
+
+// Local backup stats
+let referralStats = JSON.parse(localStorage.getItem("referralStats")) || {};
 const referrals = [
 {
 id:0,
@@ -398,7 +403,109 @@ instructions:[
 ];
 // ADDITIONAL REFERRALS
 referrals.push(
+
 {
+id: 28,
+name: "Colonoscopy",
+instructions: [
+"Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSezqgKW7HCSaD6bzLJU_Oie_WyP-M16261jbMKlD2zt_dS-rg/viewform' target='_blank'>Click Here</a>",
+"Columbus Free Clinic will call the patient to make an appointment."
+]
+},
+
+{
+id: 29,
+name: "Retinopathy",
+instructions: [
+"Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSc7ucyZfCXiNSiewGULzYwm2-nFGnByaG4X1M2W7OZkF1KhQw/viewform' target='_blank'>Click Here</a>",
+"Columbus Free Clinic will call the patient to make an appointment."
+]
+},
+
+{
+id: 30,
+name: "Ultrasound",
+instructions: [
+"Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLSfndDqpeMhhH3r4a7HwabMsraMUrNcJV-DBDr5dOwk8wOPE5w/viewform' target='_blank'>Click Here</a>",
+"Columbus Free Clinic will call the patient to make an appointment."
+]
+},
+
+{
+id: 31,
+name: "Dentist",
+instructions: [
+"Option 1: PCC, the patient will need to call to make an appointment: <a href='https://www.pcchealth.org/medical' target='_blank'>Click Here</a>",
+"Option 2: Grace Clinic Linden and Delaware ONLY: <a href='https://graceclinicsoh.org/locations-hours' target='_blank'>Click Here</a>",
+"Option 3 (Not Free but reduced): PrimaryOne: <a href='https://www.primaryonehealth.org/services/dental' target='_blank'>Click Here</a>"
+]
+},
+
+/* NEW REFERRALS */
+
+{
+id: 32,
+name: "Psychiatry",
+instructions: [
+"Referral required.",
+"Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."
+]
+},
+
+{
+id: 33,
+name: "Pain Management",
+instructions: [
+"Referral required.",
+"Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."
+]
+},
+
+{
+id: 34,
+name: "Physiotherapy",
+instructions: [
+"Referral required.",
+"Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."
+]
+},
+
+{
+id: 35,
+name: "Dentistry – Extractions Only",
+instructions: [
+"Referral required.",
+"Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."
+]
+},
+
+{
+id: 36,
+name: "Pregnancy",
+instructions: [
+"Referral required.",
+"Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."
+]
+}
+
+);
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+    
+    // ADDITIONAL REFERRALS
+referrals.push( 
+    {
     id: 28,
     name: "Colonoscopy",
     instructions: [
@@ -468,12 +575,39 @@ function clearSearch(){
 
 // MODAL
 function openReferral(id){
-    const r = referrals.find(x => x.id==id);
-    let content = "<div class='close' onclick='closeModal()'>✕</div><h2>" + r.name + "</h2><ol>";
-    r.instructions.forEach(i => content += "<li>" + i + "</li>");
-    content += "</ol>";
-    document.getElementById("modalContent").innerHTML = content;
-    document.getElementById("modal").classList.add("active");
+
+const r = referrals.find(x => x.id==id);
+
+/* LOCAL COUNT */
+if(!referralStats[r.name]){
+referralStats[r.name] = 0;
+}
+
+referralStats[r.name]++;
+
+localStorage.setItem("referralStats",JSON.stringify(referralStats));
+
+/* GOOGLE SHEETS TRACKING */
+fetch(SCRIPT_URL,{
+method:"POST",
+body:JSON.stringify({
+referral:r.name
+})
+}).catch(err=>console.log(err));
+
+/* OPEN MODAL */
+
+let content = "<div class='close' onclick='closeModal()'>✕</div><h2>" + r.name + "</h2><ol>";
+
+r.instructions.forEach(i => content += "<li>" + i + "</li>");
+
+content += "</ol>";
+
+document.getElementById("modalContent").innerHTML = content;
+
+document.getElementById("modal").classList.add("active");
+
+}
 }
 function closeModal(){
     document.getElementById("modal").classList.remove("active");
