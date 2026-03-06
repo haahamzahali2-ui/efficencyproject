@@ -188,10 +188,31 @@ header {
 const referrals = [
 {
 id:0,
-name:"*Important* Please Read Before Doing Any Referral",
-instructions:["Referral forms no longer need to be printed, instead they will be sent electronically, please enable patient information sharing on Athena."]
-},
-{
+<!-- IMPORTANT CARD -->
+<div class="card important-card" 
+     onclick="openFullScreen('Important', 'Referral forms no longer need to be printed, instead they will be sent electronically. Please enable patient information sharing on Athena.')">
+  <div class="card-title">*Important* Please Read Before Doing Any Referral</div>
+</div>
+
+<style>
+/* IMPORTANT CARD STYLING */
+.important-card {
+    background: #ff4d4d; /* Bright red */
+    border: 2px solid #b30000; /* Dark red border */
+    color: #ffffff; /* White text */
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.important-card .card-title {
+    color: #ffffff; /* Ensure title is readable */
+}
+
+.important-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(255, 77, 77, 0.5);
+}
+</style>
 id:1,
 name:"Gynecologist",
 instructions:[
