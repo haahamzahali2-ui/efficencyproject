@@ -3,21 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Helping Hands Referral System</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #0e1f3d;
-    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff, #f8f6f0);
+    color: #1a1a1a;
 }
+
+/* HEADER */
 header {
     text-align: center;
-    padding: 20px 0;
-    background: #13284b;
-    font-size: 28px;
-    font-weight: 600;
+    padding: 40px 20px;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b68b2c;
+    border-bottom: 2px solid rgba(212,175,55,0.3);
+    background: linear-gradient(to right, #ffffff, #f3efe3);
 }
+
+/* SEARCH BOX */
 .search-area {
     text-align: center;
     margin: 20px 0;
@@ -27,38 +34,49 @@ header {
     max-width: 90%;
     padding: 12px;
     border-radius: 6px;
-    border: none;
-    background: #162f5c;
-    color: white;
+    border: 1px solid #d4af37;
+    background: #fff8e1;
+    color: #1a1a1a;
     font-size: 16px;
 }
+
+/* GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 0 20px 40px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 30px auto;
+    padding: 0 30px 60px 30px;
 }
+
+/* CARD */
 .card {
-    background: #162f5c;
-    padding: 20px;
-    border-radius: 10px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212,175,55,0.35);
+    min-height: 120px;
+    box-shadow: 0 8px 25px rgba(212,175,55,0.08);
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
 }
+
 .card:hover {
-    background: #1d3e77;
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    border: 1px solid #d4af37;
+    box-shadow: 0 12px 35px rgba(212,175,55,0.18);
 }
+
+/* MODAL */
 .modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
     background: rgba(0,0,0,0.85);
     display: flex;
     justify-content: center;
@@ -72,31 +90,47 @@ header {
     pointer-events: auto;
 }
 .modal-box {
-    background: #13284b;
+    background: #fff;
+    color: #1a1a1a;
     padding: 40px;
-    width: 750px;
+    width: 800px;
     max-width: 95%;
-    border-radius: 10px;
+    border-radius: 14px;
     overflow-y: auto;
     max-height: 90%;
+    box-shadow: 0 10px 40px rgba(212,175,55,0.25);
+    position: relative;
+}
+.modal-box h2 {
+    color: #b68b2c;
 }
 .close {
     position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 30px;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
     cursor: pointer;
 }
 .modal-box a {
-    color: #ffd700;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #d4af37, #b68b2c);
+    color: #ffffff;
     text-decoration: none;
+    border-radius: 6px;
     font-weight: 600;
+    transition: 0.2s ease;
 }
 .modal-box a:hover {
-    text-decoration: underline;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212,175,55,0.35);
 }
-.modal-box ol {
-    margin-left: 20px;
+
+/* MOBILE */
+@media (max-width: 600px) {
+    header { font-size: 1.8em; }
+    .search { width: 90%; }
 }
 </style>
 </head>
@@ -116,14 +150,19 @@ header {
 </div>
 
 <script>
-const referrals=[
+const referrals = [
+{
+id:0,
+name:"*Important* Please Read Before Doing Any Referral",
+instructions:["Referral forms no longer need to be printed, instead they will be sent electronically, please enable patient information sharing on Athena."]
+},
 {
 id:1,
 name:"Gynecologist",
 instructions:[
 "Ensure it’s not a preventive women’s health visit. Look for “pelvic pain, abdominal pain, chronic pain,” etc., on Athena.",
 "Go to the patient room and enter their information in the form below: <a href='https://docs.google.com/forms/d/e/1FAIpQLScfPP-kScCPwDw2k0XSg5FdQltCnMUmdLOGg1q4c_NMcr7WWQ/viewform' target='_blank'>Click Here</a>",
-"Columbus Free Clinic will call the patient to make an appointment"
+"Columbus Free Clinic will call the patient to make an appointment."
 ]
 },
 {
@@ -131,8 +170,8 @@ id:2,
 name:"Women’s Health",
 instructions:[
 "Ensure it’s a preventative visit, not a gynecology referral.",
-"Grab the women’s health scheduling clipboard from the front, ask patient what time and date works best, write their information on the clipboard (Athena ID, name, phone number, DOB)",
-"Give the patient an appointment reminder card (Available at front)",
+"Grab the women’s health scheduling clipboard from the front, ask patient what time and date works best, write their information on the clipboard (Athena ID, name, phone number, DOB).",
+"Give the patient an appointment reminder card (Available at front).",
 "Go to Athena and schedule the patient at the chosen time."
 ]
 },
@@ -207,9 +246,7 @@ instructions:[
 {
 id:11,
 name:"Podiatry",
-instructions:[
-"Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."
-]
+instructions:["Tell patients they will receive a phone call from Primary Care Connection (Free) to schedule them."]
 },
 {
 id:12,
@@ -222,6 +259,41 @@ instructions:[
 },
 {
 id:13,
+name:"Brain and Spine",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:14,
+name:"ENT",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:15,
+name:"Trauma Surgery",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:16,
+name:"Orthopedics",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:17,
+name:"Sports Medicine",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:18,
+name:"General Surgery",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:19,
+name:"Oncology",
+instructions:["Please refer to the OhioHealth Tab."]
+},
+{
+id:20,
 name:"X-Ray",
 instructions:[
 "Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
@@ -229,7 +301,7 @@ instructions:[
 ]
 },
 {
-id:14,
+id:21,
 name:"CT Scans",
 instructions:[
 "Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
@@ -237,7 +309,7 @@ instructions:[
 ]
 },
 {
-id:15,
+id:22,
 name:"MRI",
 instructions:[
 "Click the link and fill in information, refer to Athena: <a href='https://radiologyassist.com/' target='_blank'>Click Here</a>.",
@@ -245,7 +317,7 @@ instructions:[
 ]
 },
 {
-id:16,
+id:23,
 name:"OSU Referrals",
 instructions:[
 "OSU is not free, but has financial assistance. Process may take weeks.",
@@ -255,7 +327,7 @@ instructions:[
 ]
 },
 {
-id:17,
+id:24,
 name:"OhioHealth Referrals",
 instructions:[
 "OhioHealth is not free, financial assistance may take 6-8 weeks.",
@@ -265,15 +337,15 @@ instructions:[
 ]
 },
 {
-id:18,
-name:"STD/STI screenings",
+id:25,
+name:"STD/STI Screenings",
 instructions:[
 "Done at Columbus Department of Public Health, fees apply, sliding scale.",
 "Click for hours/location: <a href='https://www.columbus.gov/Services/Public-Health/Health-Clinics-and-Services/Sexual-Health-and-Wellness-Center' target='_blank'>Click Here</a>."
 ]
 },
 {
-id:19,
+id:26,
 name:"Pregnancy Testing",
 instructions:[
 "Done at Columbus Department of Public Health, fees apply, sliding scale.",
@@ -281,7 +353,7 @@ instructions:[
 ]
 },
 {
-id:20,
+id:27,
 name:"Immunization",
 instructions:[
 "Done at Columbus Department of Public Health, fees apply, sliding scale.",
